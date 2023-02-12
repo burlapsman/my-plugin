@@ -3,6 +3,7 @@ package com.lambert.demo;
 import com.lambert.demo.cmd.Command;
 import com.lambert.demo.cmd.DelegateCommand;
 import com.lambert.demo.log.LogManager;
+import com.lambert.demo.platform.PluginLoader;
 
 import java.util.Arrays;
 import java.util.Scanner;
@@ -24,7 +25,12 @@ public class PlatformApp {
      */
     private static volatile boolean stopped = false;
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
+        // 加载插件
+        PluginLoader pluginLoader = new PluginLoader();
+        pluginLoader.loadPlugins();
+
+        // 接受命令并执行
         accept();
     }
 
