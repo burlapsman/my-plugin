@@ -16,7 +16,8 @@ public class ListPluginCommand implements Command {
         StringBuilder builder = new StringBuilder();
         builder.append("plugins total: ").append(plugins.size()).append("\n");
         for (PluginApp plugin : plugins) {
-            builder.append(" - ").append(plugin.getName()).append("\n");
+            boolean isOfficial = PluginManager.isOfficial(plugin.getName());
+            builder.append(" - ").append(plugin.getName()).append(isOfficial ? "*" : "").append("\n");
         }
         LogManager.log(builder.toString());
     }
